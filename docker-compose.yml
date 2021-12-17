@@ -12,8 +12,15 @@ services:
     environment:
       - ADMINER_DEFAULT_SERVER=db-as
     ports:
-      - TWOJPORT-81X8:8080
+      - TWOJPORT-8138:8080
 ### DODAJ kontener webapp bazujący na obrazie z7-TWOJLOGIN 
-
-volumes:
-  uzupełnij
+  webapp:
+    image: z7-opszeniczko:1.0
+    environment:
+      - FLASK_RUN_HOST=localhost
+      - FLASK_RUN_PORT=9999
+      - FLASK_ENV=development
+    ports:
+      - 8038:9999
+    volumes:
+      - .:output
